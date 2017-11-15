@@ -1,19 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd.c                                        :+:      :+:    :+:   */
+/*   ft_lstsearch.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nkamolba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/09 15:20:32 by nkamolba          #+#    #+#             */
-/*   Updated: 2017/11/15 11:04:48 by nkamolba         ###   ########.fr       */
+/*   Created: 2017/11/15 14:07:23 by nkamolba          #+#    #+#             */
+/*   Updated: 2017/11/15 14:11:51 by nkamolba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstadd(t_list **alst, t_list *new)
+t_list	*ft_lststrchr(t_list *lst, char *str)
 {
-	new->next = *alst;
-	*alst = new;
+	while (lst)
+	{
+		if (ft_strcmp(str, lst->content) == 0)
+			return (lst);
+		lst = lst->next;
+	}
+	return (NULL);
 }
