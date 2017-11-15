@@ -6,7 +6,7 @@
 #    By: nkamolba <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/08 09:11:21 by nkamolba          #+#    #+#              #
-#    Updated: 2017/11/15 14:32:04 by nkamolba         ###   ########.fr        #
+#    Updated: 2017/11/15 15:21:34 by nkamolba         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ FILES =	ft_memset ft_bzero ft_memcpy ft_memccpy ft_memmove ft_memchr ft_memcmp\
 		ft_countword ft_wordlen ft_getword ft_skipc ft_skiptoc\
 		ft_numlen ft_power\
 		ft_lstnew ft_lstdelone ft_lstdel ft_lstadd ft_lstiter ft_lstmap\
-		ft_lstpushback ft_lstprint ft_lststrchr ft_lstrev
+		ft_lstpushback ft_lstprint ft_lstsearch ft_lstrev
 		
 SRCC = $(addsuffix .c, $(FILES))
 SRCO = $(addsuffix .o, $(FILES))
