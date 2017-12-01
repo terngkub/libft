@@ -1,28 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_numlen.c                                        :+:      :+:    :+:   */
+/*   ft_putstr_len.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nkamolba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/09 12:07:22 by nkamolba          #+#    #+#             */
-/*   Updated: 2017/11/24 15:29:59 by nkamolba         ###   ########.fr       */
+/*   Created: 2017/11/27 15:55:48 by nkamolba          #+#    #+#             */
+/*   Updated: 2017/11/27 17:38:03 by nkamolba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_numlen(long long int n)
+void	ft_putstr_len(char *str, size_t len)
 {
-	int len;
-
-	len = 0;
-	if (n == 0)
-		return (1);
-	while (n)
-	{
-		len++;
-		n /= 10;
-	}
-	return (len);
+	while (len--)
+		write(1, str++, 1);
 }

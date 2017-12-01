@@ -1,28 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_numlen.c                                        :+:      :+:    :+:   */
+/*   ft_strfncat_front.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nkamolba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/09 12:07:22 by nkamolba          #+#    #+#             */
-/*   Updated: 2017/11/24 15:29:59 by nkamolba         ###   ########.fr       */
+/*   Created: 2017/11/27 18:13:23 by nkamolba          #+#    #+#             */
+/*   Updated: 2017/11/27 18:15:03 by nkamolba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_numlen(long long int n)
+char	*ft_strfncat_front(char **str1, char *str2,
+			size_t len1, size_t len2)
 {
-	int len;
+	char	*word;
+	size_t	i;
 
-	len = 0;
-	if (n == 0)
-		return (1);
-	while (n)
+	if (!(word = ft_strnew(len1 + len2)))
+		return (NULL);
+	i = 0;
+	while (i < len2)
 	{
-		len++;
-		n /= 10;
+		word[i] = str2[i];
+		i++;
 	}
-	return (len);
+	while (i - len2 < len1)
+	{
+		word[i] = str1[0][i - len2];
+		i++;
+	}
+	free(*str1);
+	*str1 = word;
+	return (*str1);
 }

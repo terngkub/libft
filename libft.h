@@ -6,7 +6,7 @@
 /*   By: nkamolba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 09:09:23 by nkamolba          #+#    #+#             */
-/*   Updated: 2017/11/15 15:21:53 by nkamolba         ###   ########.fr       */
+/*   Updated: 2017/12/01 13:21:21 by nkamolba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 # include <unistd.h>
 # include <stdlib.h>
+# include "get_next_line.h"
+# include "ft_printf/ft_printf.h"
 
 void				*ft_memset(void *b, int c, size_t len);
 void				ft_bzero(void *s, size_t n);
@@ -61,7 +63,7 @@ char				*ft_strsub(char const *s, unsigned int start, size_t len);
 char				*ft_strjoin(char const *s1, char const *s2);
 char				*ft_strtrim(char const *s);
 char				**ft_strsplit(char const *s, char c);
-char				*ft_itoa(int n);
+char				*ft_itoa(long long n);
 void				ft_putchar(char c);
 void				ft_putstr(char const *s);
 void				ft_putendl(char const *s);
@@ -76,8 +78,16 @@ int					ft_wordlen(char const *s, char c);
 char				*ft_getword(char const *s, char c);
 char const			*ft_skipc(char const *s, char c);
 char const			*ft_skiptoc(char const *s, char c);
-int					ft_numlen(int n);
+int					ft_numlen(long long n);
 int					ft_power(int base, int power);
+char				*ft_itoa_base(size_t n, char *base);
+char				*ft_strfreecat_back(char **str1, char *str2);
+char				*ft_strfreecat_front(char **str1, char *str2);
+char				*ft_strfncat_back(char **str1, char *str2,
+						size_t len1, size_t len2);
+char				*ft_strfncat_front(char **str1, char *str2,
+						size_t len1, size_t len2);
+void				ft_putstr_len(char *str, size_t len);
 
 typedef struct		s_list
 {

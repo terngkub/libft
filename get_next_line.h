@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_numlen.c                                        :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nkamolba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/09 12:07:22 by nkamolba          #+#    #+#             */
-/*   Updated: 2017/11/24 15:29:59 by nkamolba         ###   ########.fr       */
+/*   Created: 2017/11/15 10:38:50 by nkamolba          #+#    #+#             */
+/*   Updated: 2017/12/01 13:21:39 by nkamolba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-int		ft_numlen(long long int n)
+# include "libft.h"
+
+# define BUFF_SIZE 32
+
+typedef struct			s_fd_list
 {
-	int len;
+	int					fd;
+	char				*content;
+	struct s_fd_list	*next;
+}						t_fd_list;
 
-	len = 0;
-	if (n == 0)
-		return (1);
-	while (n)
-	{
-		len++;
-		n /= 10;
-	}
-	return (len);
-}
+int						get_next_line(const int fd, char **line);
+
+#endif

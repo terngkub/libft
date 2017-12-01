@@ -1,28 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_numlen.c                                        :+:      :+:    :+:   */
+/*   ft_strfreecat_front.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nkamolba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/09 12:07:22 by nkamolba          #+#    #+#             */
-/*   Updated: 2017/11/24 15:29:59 by nkamolba         ###   ########.fr       */
+/*   Created: 2017/11/24 12:56:03 by nkamolba          #+#    #+#             */
+/*   Updated: 2017/11/24 14:46:28 by nkamolba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_numlen(long long int n)
+char	*ft_strfreecat_front(char **str1, char *str2)
 {
-	int len;
+	char	*tmp;
 
-	len = 0;
-	if (n == 0)
-		return (1);
-	while (n)
-	{
-		len++;
-		n /= 10;
-	}
-	return (len);
+	if (!(tmp = ft_strjoin(str2, *str1)))
+		return (NULL);
+	free(*str1);
+	*str1 = tmp;
+	return (*str1);
 }

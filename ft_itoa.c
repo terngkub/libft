@@ -6,34 +6,35 @@
 /*   By: nkamolba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 11:36:40 by nkamolba          #+#    #+#             */
-/*   Updated: 2017/11/09 12:12:46 by nkamolba         ###   ########.fr       */
+/*   Updated: 2017/11/23 17:34:13 by nkamolba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_itoa(int n)
+char	*ft_itoa(long long int n)
 {
-	int		len;
-	char	*str;
-	char	*ret;
+	int			len;
+	char		neg;
+	char		*str;
 
-	if (n == -2147483648)
-		return (ft_strsub("-2147483648", 0, 11));
+	if (n == 0)
+		return (ft_strdup("0"));
 	len = ft_numlen(n);
-	if (len == 0)
-		return (NULL);
-	str = ft_strnew(len);
-	if (!str)
-		return (NULL);
-	ret = str;
+	neg = 0;
 	if (n < 0)
+		neg = 1;
+	if (!(str = ft_strnew(len + neg)))
+		return (NULL);
+	if (neg)
+		str[0] = '-';
+	while (n)
 	{
-		*str++ = '-';
-		n *= -1;
-		len--;
+		if (n < 0)
+			str[len--] = ((n % 10) * -1) + '0';
+		else
+			str[--len] = n % 10 + '0';
+		n /= 10;
 	}
-	while (len--)
-		*str++ = n / ft_power(10, len) % 10 + '0';
-	return (ret);
+	return (str);
 }

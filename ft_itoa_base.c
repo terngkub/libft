@@ -1,28 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_numlen.c                                        :+:      :+:    :+:   */
+/*   ft_itoa_base.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nkamolba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/09 12:07:22 by nkamolba          #+#    #+#             */
-/*   Updated: 2017/11/24 15:29:59 by nkamolba         ###   ########.fr       */
+/*   Created: 2017/11/24 12:52:27 by nkamolba          #+#    #+#             */
+/*   Updated: 2017/11/24 12:52:39 by nkamolba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_numlen(long long int n)
+char	*ft_itoa_base(size_t n, char *base)
 {
-	int len;
+	int		base_len;
+	int		num_len;
+	size_t	tmp;
+	char	*str;
 
-	len = 0;
-	if (n == 0)
-		return (1);
-	while (n)
+	base_len = ft_strlen(base);
+	num_len = 1;
+	tmp = n;
+	while (tmp /= base_len)
+		num_len++;
+	if (!(str = ft_strnew(num_len)))
+		return (NULL);
+	while (num_len--)
 	{
-		len++;
-		n /= 10;
+		str[num_len] = base[n % base_len];
+		n /= base_len;
 	}
-	return (len);
+	return (str);
 }
