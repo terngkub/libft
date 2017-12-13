@@ -6,7 +6,7 @@
 #    By: nkamolba <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/08 09:11:21 by nkamolba          #+#    #+#              #
-#    Updated: 2017/12/01 13:22:11 by nkamolba         ###   ########.fr        #
+#    Updated: 2017/12/10 11:57:06 by nkamolba         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,29 +31,32 @@ FILE =	ft_memset ft_bzero ft_memcpy ft_memccpy ft_memmove ft_memchr ft_memcmp\
 		ft_lstpushback ft_lstprint ft_lstsearch ft_lstrev\
 		get_next_line
 		
-FILE_C = $(addsuffix .c, $(FILE))
 FILE_O = $(addsuffix .o, $(FILE))
 
 PNTF =	ft_printf read_input get_conv get_data\
 		get_num get_str get_wchar get_ptr\
 		handle_flag handle_wp
 
-PNTF_C = $(addprefix ft_printf/, $(addsuffix .c, $(PNTF)))
-PNTF_O = $(addsuffix .o, $(PNTF))
+PNTF_O = $(addprefix ft_printf/, $(addsuffix .o, $(PNTF)))
 
-all : $(NAME)
+all: $(NAME)
 
-$(NAME) :
-	gcc -Wall -Wextra -Werror -c $(FILE_C) $(PNTF_C)
-	ar rc $(NAME) $(FILE_O) $(PNTF_O)
-	ranlib $(NAME)
+$(NAME): $(FILE_O) $(PNTF_O)
+	@ar rc $(NAME) $^
+	@ranlib $(NAME)
+	@echo "$(NAME) created"
 
-clean :
-	rm -f $(FILE_O) $(PNTF_O)
+%.o: %.c
+	@gcc -Wall -Wextra -Werror -c $< -o $@
 
-fclean : clean
-	rm -f $(NAME)
+clean:
+	@rm -f $(FILE_O) $(PNTF_O)
+	@echo "$(NAME) clean done"
 
-re : fclean all
+fclean: clean
+	@rm -f $(NAME)
+	@echo "$(NAME) fclean done"
 
-.PHONY: all $(NAME) clean fclean re
+re: fclean all
+
+.PHONY: all clean fclean re

@@ -6,16 +6,16 @@
 /*   By: nkamolba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 14:26:50 by nkamolba          #+#    #+#             */
-/*   Updated: 2017/11/09 12:53:07 by nkamolba         ###   ########.fr       */
+/*   Updated: 2017/12/07 19:11:22 by nkamolba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *str)
+long long	ft_atoi(const char *str)
 {
-	int	neg;
-	int	num;
+	int			neg;
+	long long	num;
 
 	neg = 1;
 	num = 0;
