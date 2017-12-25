@@ -1,23 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
+/*   ft_queue_dequeue.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nkamolba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/09 15:01:43 by nkamolba          #+#    #+#             */
-/*   Updated: 2017/12/25 16:21:15 by nkamolba         ###   ########.fr       */
+/*   Created: 2017/12/25 17:48:08 by nkamolba          #+#    #+#             */
+/*   Updated: 2017/12/25 17:48:44 by nkamolba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstdelone(t_list **alst, void (*del)(void *, size_t))
+void	*ft_queue_dequeue(t_queue *queue)
 {
-	if (del != NULL)
-		del((*alst)->content, (*alst)->content_size);
-	else
-		free((*alst)->content);
-	free(*alst);
-	*alst = NULL;
+	t_list	*list;
+	void	*content;
+
+	if (!queue || queue->size == 0)
+		return (NULL);
+	list = queue->head;
+	content = list->content;
+	if (queue->size == 1)
+		queue->tail = NULL;
+	queue->head = queue->head->next;
+	free(list);
+	queue->size--;
+	return (content);
 }

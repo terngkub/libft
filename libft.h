@@ -6,7 +6,7 @@
 /*   By: nkamolba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 09:09:23 by nkamolba          #+#    #+#             */
-/*   Updated: 2017/12/02 18:02:51 by nkamolba         ###   ########.fr       */
+/*   Updated: 2017/12/25 17:48:26 by nkamolba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,9 +102,37 @@ void				ft_lstdel(t_list **alst, void (*del)(void *, size_t));
 void				ft_lstadd(t_list **alst, t_list *new);
 void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
+
 void				ft_lstpushback(t_list **alst, t_list *new);
 void				ft_lstprint(t_list *lst);
 t_list				*ft_lstsearch(t_list *lst, char *str);
 void				ft_lstrev(t_list **lst);
 
+typedef struct		s_stack
+{
+	struct s_list	*head;
+	size_t			size;
+	size_t			content_size;
+}					t_stack;
+
+t_stack				*ft_stack_create(size_t content_size);
+void				ft_stack_push(t_stack *stack, void const *content);
+void				*ft_stack_pop(t_stack *stack);
+
+typedef struct		s_queue
+{
+	struct s_list	*head;
+	struct s_list	*tail;
+	size_t			size;
+	size_t			content_size;
+}					t_queue;
+
+t_queue				*ft_queue_create(size_t content_size);
+void				ft_queue_enqueue(t_queue *queue, void const *content);
+void				*ft_queue_dequeue(t_queue *queue);
+
+typedef struct		s_struct
+{
+	char			*str;
+}					t_struct;
 #endif

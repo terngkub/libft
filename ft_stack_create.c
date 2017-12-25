@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
+/*   ft_stack_create.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nkamolba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/09 15:01:43 by nkamolba          #+#    #+#             */
-/*   Updated: 2017/12/25 16:21:15 by nkamolba         ###   ########.fr       */
+/*   Created: 2017/12/25 11:58:52 by nkamolba          #+#    #+#             */
+/*   Updated: 2017/12/25 12:21:43 by nkamolba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstdelone(t_list **alst, void (*del)(void *, size_t))
+t_stack	*ft_stack_create(size_t content_size)
 {
-	if (del != NULL)
-		del((*alst)->content, (*alst)->content_size);
-	else
-		free((*alst)->content);
-	free(*alst);
-	*alst = NULL;
+	t_stack	*stack;
+
+	if (!(stack = (t_stack *)malloc(sizeof(t_stack))))
+		return (NULL);
+	stack->head = NULL;
+	stack->size = 0;
+	stack->content_size = content_size;
+	return (stack);
 }

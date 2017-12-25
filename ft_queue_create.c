@@ -1,23 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
+/*   ft_queue_create.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nkamolba <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/09 15:01:43 by nkamolba          #+#    #+#             */
-/*   Updated: 2017/12/25 16:21:15 by nkamolba         ###   ########.fr       */
+/*   Created: 2017/12/25 17:33:06 by nkamolba          #+#    #+#             */
+/*   Updated: 2017/12/25 17:45:11 by nkamolba         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstdelone(t_list **alst, void (*del)(void *, size_t))
+t_queue	*ft_queue_create(size_t content_size)
 {
-	if (del != NULL)
-		del((*alst)->content, (*alst)->content_size);
-	else
-		free((*alst)->content);
-	free(*alst);
-	*alst = NULL;
+	t_queue	*queue;
+
+	if (!(queue = (t_queue *)malloc(sizeof(t_queue))))
+		return (NULL);
+	queue->head = NULL;
+	queue->tail = NULL;
+	queue->size = 0;
+	queue->content_size = content_size;
+	return (queue);
 }
